@@ -33,8 +33,8 @@ export class Clock extends React.Component<{},{}> {
     private resetCounter(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
         this.setState({
-            initCounter: this.refs['counter'].value,
-            counter: this.refs['counter'].value
+            initCounter: (this.refs['counter'] as HTMLInputElement).value,
+            counter: (this.refs['counter'] as HTMLInputElement).value
         });
     }
 
