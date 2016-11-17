@@ -7,6 +7,8 @@ export class Clock extends React.Component<{},{}> {
         counter: 0
     };
 
+    private resetCounterHandler = (e: React.MouseEvent<HTMLButtonElement>) => this.resetCounter(e);
+
     public componentDidMount() {
         this._timerId = setInterval(() => {
             this.setState((prevState: any, props: any) => {
@@ -32,7 +34,7 @@ export class Clock extends React.Component<{},{}> {
         return (
             <div>
                 <h1>{this.state.counter}</h1>
-                <button onClick={(e) => this.resetCounter(e)}>Reset</button>
+                <button onClick={this.resetCounterHandler}>Reset</button>
             </div>
         );
     }
