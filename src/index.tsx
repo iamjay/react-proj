@@ -3,21 +3,13 @@ import * as ReactDOM from "react-dom";
 
 import * as injectTapEventPlugin from 'react-tap-event-plugin';
 
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-
-import { Hello } from './components/Hello';
+import { Clock } from './components/Clock';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-const App = () => (
-    <MuiThemeProvider>
-        <Hello />
-    </MuiThemeProvider>
-);
-
 ReactDOM.render(
-    <App />,
+    <Clock />,
     document.getElementById("app")
 );
