@@ -2,7 +2,6 @@ import * as React from "react";
 
 export class Clock extends React.Component<{},{}> {
     private _timerId: number;
-    private _inputCounter: any;
 
     public state = {
         initCounter: 100,
@@ -10,8 +9,6 @@ export class Clock extends React.Component<{},{}> {
     };
 
     private resetCounterHandler = (e: React.MouseEvent<HTMLButtonElement>) => this.resetCounter(e);
-
-    private initCounterChangeHandler = (e: React.FormEvent<HTMLInputElement>) => this.initCounterChange(e);
 
     public componentDidMount() {
         this._timerId = setInterval(() => {
@@ -35,16 +32,9 @@ export class Clock extends React.Component<{},{}> {
 
     private resetCounter(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
-        this.setState((prevState: any) => {
-            return {
-                counter: prevState.initCounter
-            }
-        });
-    }
-
-    private initCounterChange(e: React.FormEvent<HTMLInputElement>) {
         this.setState({
-            initCounter: (e.target as HTMLInputElement).value
+            initCounter: this.refs['counter'].value,
+            counter: this.refs['counter'].value
         });
     }
 
@@ -53,8 +43,7 @@ export class Clock extends React.Component<{},{}> {
             <div>
                 <h1>{this.state.counter}</h1>
                 <form>
-                    <input type="text" value={String(this.state.initCounter)}
-                        onChange={this.initCounterChangeHandler} />
+                    <input type="text" defaultValue={String(this.state.initCounter)} ref="counter" />
                     <button onClick={this.resetCounterHandler}>Reset</button>
                 </form>
             </div>
